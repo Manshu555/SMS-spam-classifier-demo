@@ -1,9 +1,8 @@
-mkdir -p ~/.streamlit/
+#!/bin/bash
 
-echo "\
-[server]\n\
-port = $PORT\n\
-enableCORS = false\n\
-headless = true\n\
-\n\
-" > ~/.streamlit/config.toml
+# Create nltk_data directory
+mkdir -p nltk_data
+
+# Download required corpora
+python -m nltk.downloader -d nltk_data punkt stopwords
+

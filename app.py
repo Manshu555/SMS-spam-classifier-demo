@@ -1,3 +1,5 @@
+import os
+os.environ['NLTK_DATA'] = './nltk_data'
 import streamlit as st
 import pickle
 import string
@@ -7,6 +9,9 @@ from nltk.stem.porter import PorterStemmer
 
 nltk.download('punkt')
 nltk.download('stopwords')
+
+tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 ps = PorterStemmer()
 
@@ -35,8 +40,7 @@ def transform_text(text):
     return " ".join(y)
 
 
-tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
+
 
 
 st.set_page_config(page_title="Spam Classifier - Manshu Jaiswal", page_icon="📩", layout="centered")
